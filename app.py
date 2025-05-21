@@ -387,9 +387,16 @@ st.markdown("""
 try:
     col1, col2, col3 = st.columns([1, 2, 1])
     with col2:
-        st.image("assets/logo.svg", use_container_width=True)
+        try:
+            st.image("assets/logo.svg", use_container_width=True)
+        except:
+            try:
+                st.image("assets/logo.png", use_container_width=True)
+            except Exception as e:
+                st.warning("Logo could not be loaded. Please ensure either logo.svg or logo.png exists in the assets directory.")
+                st.markdown("# NYĀYA: Indian Legal Assistant")
 except Exception as e:
-    st.warning("Logo could not be loaded. Please ensure the logo file exists in the assets directory.")
+    st.warning("Error in layout configuration.")
     st.markdown("# NYĀYA: Indian Legal Assistant")
 
 # Main title with custom styling
