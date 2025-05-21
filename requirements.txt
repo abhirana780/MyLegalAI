@@ -15,6 +15,7 @@ cryptography
 opencv-python
 plotly
 folium
+streamlit-folium
 geopandas
 pyproj
 shapely
