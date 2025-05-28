@@ -1,0 +1,25 @@
+modules = ["python-3.11", "web", "nodejs-20"]
+run = "streamlit run app.py"
+
+[nix]
+channel = "stable-24_05"
+packages = ["cargo", "freetype", "geos", "glibcLocales", "gumbo", "harfbuzz", "jbig2dec", "libGL", "libGLU", "libiconv", "libjpeg_turbo", "libxcrypt", "mupdf", "openjpeg", "openssl", "pkg-config", "proj", "rustc", "swig", "tesseract", "xcbuild", "xcodebuild", "xsimd", "zlib"]
+
+[deployment]
+run = ["sh", "-c", "streamlit run app.py"]
+
+[[ports]]
+localPort = 5000
+externalPort = 80
+
+[workflows]
+runButton = "Run"
+
+[[workflows.workflow]]
+name = "Run"
+author = 40546990
+mode = "sequential"
+
+[[workflows.workflow.tasks]]
+task = "shell.exec"
+args = "streamlit run --server.address 0.0.0.0 --server.port 5000 app.py"
