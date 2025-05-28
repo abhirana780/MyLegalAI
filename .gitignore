@@ -1,0 +1,46 @@
+# Python
+__pycache__/
+*.py[cod]
+*.pyc
+.python-version
+venv/
+.venv/
+env/
+
+# Logs and databases
+*.log
+*.sqlite
+*.db
+
+# Local development
+.env
+.env.local
+
+# IDE specific
+.idea/
+.vscode/
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
+
+# OS generated
+.DS_Store
+Thumbs.db
+
+# Project specific
+data/
+static/
+tempCodeRunnerFile.py
+uv.lock
+
+# Testing
+.coverage
+htmlcov/
+.pytest_cache/
+
+# Build/dist
+*.egg-info/
+dist/
+build/
