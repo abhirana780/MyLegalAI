@@ -13,7 +13,7 @@ def check_login():
     if not st.session_state['admin_logged_in']:
         st.markdown('<style>\n.login-card {\n  max-width: 400px;\n  margin: 80px auto 0 auto;\n  background: #fff;\n  border-radius: 16px;\n  box-shadow: 0 4px 24px rgba(0,0,0,0.10);\n  padding: 2.5rem 2rem 2rem 2rem;\n  text-align: center;\n}\n.login-logo {\n  width: 64px;\n  margin-bottom: 1rem;\n}\n.login-title {\n  font-size: 2rem;\n  font-weight: 700;\n  color: #0052cc;\n  margin-bottom: 0.5rem;\n}\n.login-subtitle {\n  color: #888;\n  margin-bottom: 1.5rem;\n}\n.stTextInput>div>div>input {\n  border-radius: 8px;\n  border: 1px solid #e0e0e0;\n  padding: 0.75rem;\n}\n.stButton>button {\n  background: linear-gradient(90deg, #0052cc 60%, #0077ff 100%);\n  color: #fff;\n  border-radius: 8px;\n  font-weight: 600;\n  padding: 0.75rem 2rem;\n  margin-top: 1rem;\n  transition: background 0.2s;\n}\n.stButton>button:hover {\n  background: #003d99;\n}\n</style>', unsafe_allow_html=True)
         st.markdown('<div class="login-card">', unsafe_allow_html=True)
-        st.image('assets/logo.svg', width=64, output_format='svg', use_container_width=False)
+        st.markdown('<div class="center-logo"><img src="assets/logo.svg" class="animated-logo" alt="MyLegalAI Logo"></div>', unsafe_allow_html=True)
         st.markdown('<div class="login-title">Admin Login</div>', unsafe_allow_html=True)
         st.markdown('<div class="login-subtitle">Welcome to MyLegalAI Admin Dashboard</div>', unsafe_allow_html=True)
         username = st.text_input('Username', key='login_username')

@@ -34,32 +34,10 @@ view_df['Advocates'] = view_df[['pet_adv', 'res_adv']].fillna('').agg(lambda x: 
 view_df = view_df.rename(columns=columns)
 
 # Search functionality
-search = st.text_input("Search by Case Number, Party, Advocate, or Judge")
-if search:
-    mask = (
-        view_df['Case Number'].astype(str).str.contains(search, case=False, na=False) |
-        view_df['Petitioner'].astype(str).str.contains(search, case=False, na=False) |
-        view_df['Respondent'].astype(str).str.contains(search, case=False, na=False) |
-        view_df['Advocates'].astype(str).str.contains(search, case=False, na=False) |
-        view_df['Judge'].astype(str).str.contains(search, case=False, na=False)
-    )
-    view_df = view_df[mask]
-
-# Sort functionality
-sort_col = st.selectbox("Sort by", ['Case Number', 'Petitioner', 'Respondent', 'Advocates', 'Judge', 'Bench', 'Date'], index=6)
-view_df = view_df.sort_values(by=sort_col, ascending=True)
-
-# Format PDF link as clickable
-def make_link(url):
-    if pd.isna(url) or not str(url).startswith('http'):
-        return ""
-    return f'<a href="{url}" target="_blank">Open PDF</a>'
-
-view_df['Judgment PDF'] = view_df['Judgment PDF'].apply(make_link)
-
 # Display table
-st.write(
+st.dataframe(
     view_df[[
         'Case Number', 'Petitioner', 'Respondent', 'Advocates', 'Judge', 'Bench', 'Date', 'Judgment PDF'
-    ]].to_html(escape=False, index=False), unsafe_allow_html=True
+    ]],
+    use_container_width=True
 )

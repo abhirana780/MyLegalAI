@@ -307,3 +307,4 @@ class LegalPredictor:
 
 # Initialize the legal predictor
 legal_predictor = LegalPredictor()
+legal_predictor.load_sample_data()
